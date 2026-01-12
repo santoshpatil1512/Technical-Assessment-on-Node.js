@@ -59,18 +59,27 @@ export const updateStock = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Stock cannot be negative");
   }
 
+    // First find the product to get current stock
+  const existingProduct = await Product.findOne({
+    _id: req.params.id,
+    createdBy: req.user.id
+  });
+
+    if (!existingProduct) {
+    throw new ApiError(404, "Product not found or access denied");
+  }
+
+    // Calculate new stock by adding to existing stock
+  const newStock = existingProduct.stock + stock;
+
   const product = await Product.findOneAndUpdate(
     {
       _id: req.params.id,
       createdBy: req.user.id
     },
-    { stock },
+    { stock: newStock },
     { new: true }
   );
-
-  if (!product) {
-    throw new ApiError(404, "Product not found or access denied");
-  }
 
   cache.del(`products_admin_${req.user.id}`);
 

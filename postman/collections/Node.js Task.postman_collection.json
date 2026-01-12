@@ -319,6 +319,78 @@
       "response": []
     },
     {
+      "name": "Cancel Order (CREATED only) by Admin",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "93c29b24-af7f-4b0f-9bea-a70aadf7939a",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "07113786-0d89-4401-bb2f-045ee12f7180",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "f58321db-0cca-4c14-91ae-59821ea37260",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjM4NTkwNDhmYThhN2E1MTIyMmJkMyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc2ODIzOTU3OSwiZXhwIjoxNzY4MzI1OTc5fQ.d6_JzK8Yvtn6PH_P_6vMjaqjcWTi1ex46RX5QuLJZBE",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/orders/ORD-1768239346588-483/cancel",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "orders",
+            "ORD-1768239346588-483",
+            "cancel"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
       "name": "Register CUSTOMER",
       "event": [
         {
@@ -433,6 +505,18 @@
             "packages": {},
             "requests": {}
           }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "6578d2c6-5d50-4aa2-9d03-72e5a8672dac",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
         }
       ],
       "id": "424cc03d-99d3-49ac-8a84-fc075714c3a1",
@@ -442,7 +526,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjI4NGE5ODZkMDNmNDIzMTkxMGRhZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2ODExNzUwNSwiZXhwIjoxNzY4MjAzOTA1fQ.DcobiSJBnWJcOppsHFj93DWaL5Hjw-UM8ptmKnmFfwU",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjI4NGE5ODZkMDNmNDIzMTkxMGRhZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2ODIzNzA5MCwiZXhwIjoxNzY4MzIzNDkwfQ.gVXnf7eWveUxKlXoP5WAqArnVT5xFGsmwUFCIxJ8-fo",
               "type": "string"
             }
           ]
@@ -451,7 +535,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"items\": [\n    {\n      \"product\": \"69638e7d116282982ec00dc7\",\n      \"quantity\": 9\n    }\n  ]\n}",
+          "raw": "{\n  \"items\": [\n    {\n      \"product\": \"69638e7d116282982ec00dc7\",\n      \"quantity\": 10\n    }\n  ]\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -491,6 +575,18 @@
             "packages": {},
             "requests": {}
           }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "e9064b49-223b-4871-af12-fe2f3d1a7dc3",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
         }
       ],
       "id": "2bf03e3d-38e6-4d93-b11e-eb93e4d17f45",
@@ -500,7 +596,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjI4NGE5ODZkMDNmNDIzMTkxMGRhZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2ODExNzUwNSwiZXhwIjoxNzY4MjAzOTA1fQ.DcobiSJBnWJcOppsHFj93DWaL5Hjw-UM8ptmKnmFfwU",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjI4NGE5ODZkMDNmNDIzMTkxMGRhZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2ODIzNzA5MCwiZXhwIjoxNzY4MzIzNDkwfQ.gVXnf7eWveUxKlXoP5WAqArnVT5xFGsmwUFCIxJ8-fo",
               "type": "string"
             }
           ]
@@ -530,11 +626,13 @@
           "query": [
             {
               "key": "page",
-              "value": "2"
+              "value": "2",
+              "uuid": "ea20884c-5bd6-4e42-aee0-be7bd15c706b"
             },
             {
               "key": "limit",
-              "value": "5"
+              "value": "5",
+              "uuid": "a12231e8-b385-45f2-ac3e-84ea6595c46c"
             }
           ]
         },
@@ -618,16 +716,28 @@
             "packages": {},
             "requests": {}
           }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "07113786-0d89-4401-bb2f-045ee12f7180",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
         }
       ],
-      "id": "f58321db-0cca-4c14-91ae-59821ea37260",
+      "id": "a187f64c-c3b6-4dfc-a0a9-6d95f9e83cfb",
       "request": {
         "auth": {
           "type": "bearer",
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjI4NGE5ODZkMDNmNDIzMTkxMGRhZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2ODExNzUwNSwiZXhwIjoxNzY4MjAzOTA1fQ.DcobiSJBnWJcOppsHFj93DWaL5Hjw-UM8ptmKnmFfwU",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NjI4NGE5ODZkMDNmNDIzMTkxMGRhZSIsInJvbGUiOiJDVVNUT01FUiIsImlhdCI6MTc2ODIzNzA5MCwiZXhwIjoxNzY4MzIzNDkwfQ.gVXnf7eWveUxKlXoP5WAqArnVT5xFGsmwUFCIxJ8-fo",
               "type": "string"
             }
           ]
@@ -660,26 +770,6 @@
         "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
       },
       "response": []
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [
-          ""
-        ]
-      }
     }
   ],
   "variable": [
