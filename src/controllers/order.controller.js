@@ -10,7 +10,6 @@ const generateOrderId = () => {
     return `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 };
 
-
 export const createOrder = asyncHandler(async (req, res) => {
     const { items } = req.body;
     const userId = req.user.id;

@@ -13,7 +13,6 @@ const generateToken = (user) => {
   );
 };
 
-
 // REGISTER
 export const register = asyncHandler(async (req, res) => {
   const { name, email, password, role } = req.body;
